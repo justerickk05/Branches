@@ -1,0 +1,71 @@
+/* ==========================================================
+   BOTONES
+========================================================== */
+.btn {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    background: var(--color-boton);
+    color: #fff;
+    transition: .25s ease;
+    box-shadow: var(--shadow-xs);
+}
+
+.btn:hover {
+    background: var(--color-boton-hover);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================
+   TARJETAS
+========================================================== */
+.card {
+    background: var(--color-secundario);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-borde);
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+.input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--color-borde);
+    background: var(--color-secundario);
+    color: var(--color-texto);
+    transition: .25s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    box-shadow: var(--shadow-xs);
+}
+
+/* ==========================================================
+   SELECTORES DE TEMAS
+========================================================== */
+.tema-selector {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.tema-opcion {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: .2s ease;
+}
+
+.tema-opcion:hover {
+    transform: scale(1.05);
+}

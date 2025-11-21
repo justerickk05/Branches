@@ -1,0 +1,415 @@
+/* ==========================================================
+   lugares.css (COMPLETO)
+   - Grid 75% centrado
+   - Tarjetas con ancho máximo
+   - Mini-mapas estilados
+   - Paginación numérica (estilos)
+   - Ocultar paginación con .form-open en body
+   - Formulario 50/50 con mapa a la derecha
+   - Botón volver arriba-derecha
+   - Textura ligera de fondo
+   - Respeta variables de color definidas en style.css
+========================================================== */
+
+/* ===========================
+   Textura ligera de fondo
+=========================== */
+body {
+    background-image:
+        radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 60px 60px, 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+/* ===========================
+   CONTENEDOR DE TARJETAS (75% centrado)
+=========================== */
+#contenedor-lugares {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+    padding: 25px;
+
+    width: 75%;           /* ocupa solo el 75% del ancho */
+    margin: 0 auto;       /* centrado horizontal */
+
+    align-items: start;
+    animation: fadeIn 0.4s ease;
+}
+
+/* ===========================
+   TARJETAS CON ANCHO MÁXIMO
+=========================== */
+.tarjeta {
+    position: relative;
+    width: 100%;
+    max-width: 420px;     /* límite elegante para que no sean demasiado anchas */
+    margin-left: auto;
+    margin-right: auto;
+
+    background: var(--color-secundario);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.06);
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    transform: translateY(15px);
+    opacity: 0;
+    animation: tarjetaAppear .5s ease forwards;
+    overflow: hidden;
+}
+
+/* Lateral de color */
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 7px;
+    background: linear-gradient(180deg, var(--color-principal), var(--color-acento));
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+/* Apariencia al mostrar */
+.tarjeta.show { opacity: 1; transform: translateY(0); }
+
+.tarjeta:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===========================
+   TEXTOS EN TARJETA
+=========================== */
+.tarjeta h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--color-principal);
+    font-weight: 700;
+}
+
+.tarjeta p {
+    margin: 4px 0;
+    color: var(--color-subtexto);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Categorías y etiquetas */
+.tarjeta .categorias,
+.tarjeta .etiquetas {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.categoria {
+    background: var(--color-principal);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.82rem;
+}
+
+.etiqueta {
+    background: var(--color-acento);
+    color: #fff;
+    padding: 5px 9px;
+    border-radius: 7px;
+    font-size: 0.78rem;
+}
+
+/* Botones dentro de tarjeta */
+.tarjeta .botones {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.tarjeta .botones button {
+    padding: 9px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    background: var(--color-principal);
+    color: #fff;
+    transition: transform .18s ease, box-shadow .18s ease;
+    box-shadow: var(--shadow-xs);
+}
+.tarjeta .botones button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ===========================
+   MINI-MAPAS EN TARJETA (estética)
+   - NOTE: la activación de zoom/controls se realiza desde JS.
+=========================== */
+.mini-mapa {
+    width: 100%;
+    height: 170px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: var(--shadow-xs);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Aumenta contraste visual al hover */
+.tarjeta:hover .mini-mapa {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Habilitar interacciones táctiles en mini-mapas (ayuda en móviles) */
+.mini-mapa .leaflet-container,
+.mini-mapa { touch-action: manipulation; }
+
+/* ===========================
+   FORMULARIO — MAPA A LA DERECHA (50/50) + BOTÓN VOLVER
+=========================== */
+.full-page-form {
+    margin: 26px auto;
+    padding: 36px;
+
+    width: 70%;                /* NUEVO — límite elegante */
+    max-width: 1100px;         /* NUEVO */
+    min-width: 700px;          /* NUEVO */
+
+    border-radius: 18px;
+    background: var(--color-secundario);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: visible;
+
+    transition: width .3s ease;
+}
+
+@media (max-width: 900px) {
+    .full-page-form {
+        width: 90%;
+        min-width: unset;
+    }
+}
+
+
+/* Botón volver: arriba-derecha, visible por encima del mapa */
+.volver-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 2200;
+    background: var(--color-acento);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-xs);
+    transition: transform .18s ease;
+}
+.volver-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+
+/* Layout 50/50 y centrado vertical de mapa */
+.form-mapa-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    /* centra verticalmente */
+    gap: 28px;
+    width: 100%;
+}
+
+/* Formulario: exactamente 50% con mínimo */
+#formulario-lugar {
+    flex: 0 1 50%;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Inputs del formulario */
+#formulario-lugar input,
+#formulario-lugar textarea,
+#formulario-lugar select {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: var(--color-secundario);
+    color: var(--color-texto);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow .18s ease, border-color .18s ease;
+}
+
+#formulario-lugar textarea { min-height: 110px; resize: vertical; }
+
+#formulario-lugar input:focus,
+#formulario-lugar textarea:focus,
+#formulario-lugar select:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Mapa: exactamente 50% con mínimo, no tapa al botón volver */
+#mapa {
+    flex: 0 1 50%;
+    min-width: 350px;
+    min-height: 480px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Botón guardar formulario */
+#formulario-lugar button[type="submit"] {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--color-principal);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+}
+#formulario-lugar button[type="submit"]:hover {
+    transform: translateY(-3px);
+}
+
+/* ===========================
+   PAGINACIÓN (container 75% centrado para coincidir con grid)
+   - incluye paginación numérica (botones de página)
+   - se puede ocultar añadiendo clase .form-open al <body>
+=========================== */
+.pagination-container {
+    margin: 28px auto 40px auto;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-radius: 12px;
+}
+
+/* Botones prev/next */
+.pagination-btn {
+    background: var(--color-principal);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-xs);
+    transition: all .18s ease;
+}
+.pagination-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+.pagination-btn:disabled { opacity: .35; cursor: default; transform: none; box-shadow: none; }
+
+/* Botones de número */
+.pagination-pages {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.page-item {
+    background: var(--color-secundario);
+    color: var(--color-texto);
+    padding: 8px 11px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: var(--shadow-xs);
+    transition: transform .15s ease, background .15s ease;
+}
+.page-item:hover { transform: translateY(-3px); }
+
+/* Estado activo */
+.page-item.active {
+    background: var(--color-principal);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Compact buttons for many pages */
+.page-item.ellipsis {
+    cursor: default;
+    transform: none;
+    opacity: 0.7;
+}
+
+/* INFO pequeña en medio (opcional) */
+.pagination-info {
+    margin: 0 6px;
+    color: var(--color-subtexto);
+    font-weight: 600;
+}
+
+/* ===========================
+   OCULTAR PAGINACIÓN CUANDO SE ABRE EL FORMULARIO
+   - Agregar/quitar clase .form-open al <body> desde JS
+=========================== */
+body.form-open .pagination-container {
+    display: none !important;
+}
+
+/* ===========================
+   ANIMACIONES
+=========================== */
+@keyframes tarjetaAppear {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(16px); } 100% { opacity: 1; transform: translateY(0); } }
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+    #contenedor-lugares { width: 90%; }
+    .pagination-container { width: 90%; }
+    .mini-mapa { height: 150px; }
+}
+
+@media (max-width: 700px) {
+    #contenedor-lugares { width: 95%; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .form-mapa-container { flex-direction: column; align-items: stretch; }
+    #formulario-lugar { flex: 1 1 100%; min-width: 0; }
+    #mapa { flex: 1 1 100%; min-width: 0; min-height: 320px; margin-top: 12px; }
+    .volver-btn { position: relative; top: 0; right: 0; margin-bottom: 12px; }
+}
+
+@media (max-width: 480px) {
+    .page-item { padding: 6px 8px; font-size: 0.92rem; }
+    .pagination-info { display: none; }
+}
+
+/* ===========================
+   NOTE:
+   - Para "ocultar la paginación" cuando se abre el formulario,
+     tu JS debe añadir/remover la clase `form-open` al elemento <body>.
+     Ejemplo:
+         document.body.classList.add('form-open');
+         document.body.classList.remove('form-open');
+   - Para mini-mapas con zoom y controles, modifica la creación de cada mini-mapa
+     en tu JS (usando `zoomControl: true` y `scrollWheelZoom: true` o similar).
+========================================================== */

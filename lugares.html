@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lugares</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lugares.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+</head>
+
+<body>
+
+    <!-- ======================= NAVBAR ======================= -->
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="color:white;text-decoration:none;font-weight:700;">MiApp</a>
+        </div>
+
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="lugares.html">Lugares</a></li>
+            <li><a href="buscador.html">Buscador</a></li>
+            <li><a href="rutas.html">Rutas</a></li>
+        </ul>
+
+        <!-- BOTÓN DE MODO OSCURO -->
+        <button id="modo-oscuro" class="nav-btn">Modo oscuro</button>
+    </nav>
+
+    <main>
+
+        <!-- Buscador -->
+        <div id="busqueda-lugares" class="centered-search">
+            <input type="text" id="buscar-nombre" placeholder="Buscar por nombre...">
+            <select id="items-por-pagina">
+                <option value="10">10 por página</option>
+                <option value="25">25 por página</option>
+                <option value="50">50 por página</option>
+            </select>
+        </div>
+
+        <!-- Botón agregar arriba -->
+        <div class="botones-principales">
+            <button id="btn-agregar" class="principal-btn">Agregar Lugar</button>
+        </div>
+
+        <!-- Tarjetas -->
+        <div id="contenedor-lugares"></div>
+
+        <!-- Paginación -->
+        <div id="paginacion" class="pagination-container"></div>
+
+        <!-- Formulario -->
+        <div class="full-page-form" id="form-lugar-container" style="display:none;">
+
+            <button id="btn-volver" class="volver-btn">Volver</button>
+
+            <div class="form-mapa-container">
+
+                <form id="formulario-lugar">
+                    <input type="text" id="nombre" placeholder="Nombre" required>
+                    <textarea id="descripcion" placeholder="Descripción"></textarea>
+                    <input type="text" id="direccion" placeholder="Dirección">
+                    <input type="text" id="numero" placeholder="Número">
+                    <input type="text" id="link" placeholder="Link">
+                    
+                    <select id="categoria">
+                        <option value="generica1">Categoría 1</option>
+                        <option value="generica2">Categoría 2</option>
+                        <option value="generica3">Categoría 3</option>
+                    </select>
+
+                    <input type="text" id="etiquetas" placeholder="Etiquetas (coma separadas)">
+
+                    <button type="submit" class="principal-btn">Guardar</button>
+                </form>
+
+                <div id="mapa"></div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Leaflet JS -->
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script type="module" src="js/utils.js"></script>
+<script type="module" src="js/script.js"></script>
+<script src="js/lugares.js"></script>
+
+
+</body>
+</html>
