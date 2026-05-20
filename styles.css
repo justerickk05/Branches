@@ -167,7 +167,7 @@ button {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(3.8rem, 8vw, 8.8rem);
   line-height: 0.86;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.04em;
   font-weight: 900;
   color: var(--white);
 }
@@ -271,6 +271,7 @@ button {
 
 .floating-card {
   position: absolute;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -288,24 +289,25 @@ button {
 }
 
 .floating-card-one {
-  top: 58px;
-  right: 80px;
+  top: -40px;
+  right: 220px;
 }
 
 .floating-card-two {
-  left: 18px;
-  top: 218px;
+  left: 70px;
+  top: 236px;
   animation-delay: 0.8s;
 }
 
 .floating-card-three {
-  right: 24px;
-  bottom: 70px;
+  right: 70px;
+  bottom: -50px;
   animation-delay: 1.6s;
 }
 
 @keyframes floaty {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
 
@@ -331,14 +333,7 @@ button {
   background: rgba(0, 37, 38, 0.56);
   backdrop-filter: blur(22px);
   box-shadow: 0 24px 58px rgba(0, 20, 22, 0.28);
-  transition:
-    top 0.35s ease,
-    bottom 0.35s ease,
-    left 0.35s ease,
-    right 0.35s ease,
-    border-radius 0.35s ease,
-    background 0.35s ease,
-    transform 0.35s ease;
+  transition: top 0.35s ease, bottom 0.35s ease, left 0.35s ease, right 0.35s ease, border-radius 0.35s ease, background 0.35s ease, transform 0.35s ease;
 }
 
 .main-nav.is-sticky {
@@ -801,7 +796,7 @@ button {
   }
 
   .hero-panel {
-    min-height: 360px;
+    min-height: 390px;
   }
 
   .main-card {
@@ -812,7 +807,21 @@ button {
   }
 
   .floating-card-one {
-    right: 24px;
+    top: -22px;
+    right: 12px;
+  }
+
+  .floating-card-two {
+    left: auto;
+    right: 22px;
+    top: auto;
+    bottom: -30px;
+  }
+
+  .floating-card-three {
+    right: auto;
+    left: 22px;
+    bottom: -92px;
   }
 
   .intro-grid,
