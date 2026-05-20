@@ -1,7 +1,7 @@
 const CONFIG = {
-  whatsappNumber: "525562069401",
+  whatsappNumber: "525637126751",
   whatsappMessage:
-    "Hola Kali Studio, quiero información sobre sus servicios de baile y eventos."
+    "¡Hola!, quiero información sobre sus servicios."
 };
 
 const services = [

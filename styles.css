@@ -289,19 +289,13 @@ button {
 }
 
 .floating-card-one {
-  top: -40px;
+  top: -30px;
   right: 220px;
 }
 
 .floating-card-two {
-  left: 70px;
-  top: 236px;
-  animation-delay: 0.8s;
-}
-
-.floating-card-three {
   right: 70px;
-  bottom: -50px;
+  bottom: -30px;
   animation-delay: 1.6s;
 }
 
