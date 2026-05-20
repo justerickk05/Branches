@@ -1,73 +1,507 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="KALI_Logo.png">
-        <title>Kali</title>
-        <!-- Navbar & Footer CSS -->
-        <link rel="stylesheet" href="css-base/navbar.css">
-        <!-- index CSS -->
-         <link rel="stylesheet" href="index.css">
-        <!-- Libraries :) -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
-        <script src="https://unpkg.com/scrollreveal"></script>
-    </head>
-    <body>
-        <!-- Navbar -->
-        <header>
-            <div id="header-main-content">
-                <a id="header-logo" href="https://justerickk05.github.io/Kali/"><img src="KALI_Logo.png" alt=""></a>
-    
-                <nav>
-                    <ul>
-                        <li><a href="#hero">Inicio</a></li>
-                        <li><a href="">Precios</a></li>
-                        <li><a href="about-us.html">Sobre Nosotros</a></li>
-                        <li><a href="">Reclutamiento</a></li>
-                    </ul>
-                </nav>
-                <div class="bx bx-menu" id="menu-icon"></div>
-            </div>
-        </header>
-        <label for="menu-icon" class="overlay"></label>
-        <script src="scripts/menuIconToggle.js"></script>
-        <!---->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loca Adicción | Cotizador de Snacks</title>
 
-        <!-- Hero -->
-        <section id="hero">
-            <div id="hero-main-content">
-                <div id="hero-title">
-                    <h1>KALI</h1>
-                    <h5>ACADEMIA DE BAILE</h5>
-                </div>
-                <div id="hero-button">
-                    <a href="#info" class="button">Descubre KALI</a>
-                </div>
-                <p>¡Descubre tu pasión por la danza con nosotros!</p>
-            </div>
-        </section>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-        
-        <section id="info">
-            <img src="" alt="" class="info-main-background">
-            <div class="info-main-content">
-                <div class="info-main-title">
-                    <h2>KALI</h2>
-                    <p>Donde la pasión por el baile se encuentra con la excelencia en la enseñanza.</p>
-                </div>
-                <div class="info-main-description">
-                    <p>Nos dedicamos a ofrecerte una formación de alta calidad en una amplia variedad de estilos de danza.<br><br>Contamos con un equipo de instructores calificados y apasionados que trabajan con cada estudiante para ayudarles a alcanzar su máximo potencial.<br><br> No solo enseñamos pasos de baile; cultivamos confianza, creatividad y disciplina en un ambiente inclusivo y motivador.</p>
-                </div>
-            </div>
-        </section>
-        <script src="scripts/scrollReveal.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 
-        <!-- Footer -->
-        <footer>
-            <p>Este sitio y su contenido es propiedad de Kali&trade;. 2024.<br><span>Todos los derechos reservados.</span></p>
-        </footer>
-        <!---->
-    </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Cotizador profesional</p>
+        <h1>Loca Adicción</h1>
+        <p class="hero-text">
+          Calcula costos, materias primas, gastos, descuentos, ganancia y genera una cotización lista para entregar.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <span>Precio recomendado</span>
+        <strong id="heroTotal">$0.00</strong>
+        <small id="heroProfit">Ganancia estimada: $0.00</small>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Secciones principales">
+      <button class="tab-button active" data-tab="productos">Productos</button>
+      <button class="tab-button" data-tab="cotizacion">Cotización</button>
+      <button class="tab-button" data-tab="estadisticas">Estadísticas</button>
+    </nav>
+
+    <main>
+      <!-- PRODUCTOS -->
+      <section id="productos" class="tab-panel active">
+        <div class="grid two-columns">
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Catálogo</p>
+                <h2 id="productFormTitle">Nuevo producto</h2>
+              </div>
+              <button class="ghost-button" id="clearProductBtn" type="button">
+                Limpiar
+              </button>
+            </div>
+
+            <input type="hidden" id="productEditId" />
+
+            <div class="form-grid">
+              <label>
+                Nombre del producto
+                <input id="productName" type="text" placeholder="Ej. Papas preparadas" />
+              </label>
+
+              <label>
+                Categoría
+                <input id="productCategory" type="text" placeholder="Ej. Salado, Dulce, Bebida" />
+              </label>
+
+              <label>
+                Consumo sugerido por persona
+                <input id="productDefaultConsumption" type="number" min="0" step="0.01" value="1" />
+              </label>
+
+              <label>
+                Nombre de la porción
+                <input id="productUnitLabel" type="text" placeholder="Ej. vaso, charola, bolsa" value="porción" />
+              </label>
+            </div>
+
+            <label>
+              Notas internas
+              <textarea id="productNotes" rows="3" placeholder="Ej. Ideal para eventos infantiles."></textarea>
+            </label>
+
+            <hr class="soft-divider" />
+
+            <h3>Materias primas del producto</h3>
+
+            <div class="ingredient-builder">
+              <label>
+                Materia prima
+                <input id="ingredientName" type="text" placeholder="Ej. Papas, salsa, queso" />
+              </label>
+
+              <label>
+                Cantidad por porción
+                <input id="ingredientQty" type="number" min="0" step="0.0001" placeholder="Ej. 0.08" />
+              </label>
+
+              <label>
+                Unidad
+                <select id="ingredientUnit">
+                  <option value="kg">kg</option>
+                  <option value="g">g</option>
+                  <option value="l">l</option>
+                  <option value="ml">ml</option>
+                  <option value="pz">pz</option>
+                  <option value="paquete">paquete</option>
+                  <option value="caja">caja</option>
+                  <option value="bolsa">bolsa</option>
+                </select>
+              </label>
+
+              <label>
+                Costo por unidad
+                <input id="ingredientCost" type="number" min="0" step="0.01" placeholder="Ej. 85" />
+              </label>
+
+              <button class="primary-button" id="addIngredientBtn" type="button">
+                Agregar
+              </button>
+            </div>
+
+            <div class="helper">
+              Ejemplo: si compras papas por kilo, usa unidad <strong>kg</strong>, cantidad por porción <strong>0.08</strong> y costo por unidad <strong>85</strong>.
+            </div>
+
+            <div class="table-wrap compact-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Materia prima</th>
+                    <th>Cantidad</th>
+                    <th>Costo unitario</th>
+                    <th>Costo por porción</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="ingredientDraftBody"></tbody>
+              </table>
+            </div>
+
+            <div class="form-actions">
+              <button class="primary-button wide" id="saveProductBtn" type="button">
+                Guardar producto
+              </button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Guardados</p>
+                <h2>Productos disponibles</h2>
+              </div>
+
+              <div class="mini-actions">
+                <button class="ghost-button" id="exportDataBtn" type="button">Exportar datos</button>
+                <button class="ghost-button" id="importDataBtn" type="button">Importar</button>
+                <input id="importDataFile" type="file" accept="application/json" hidden />
+              </div>
+            </div>
+
+            <div id="productList" class="product-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- COTIZACIÓN -->
+      <section id="cotizacion" class="tab-panel">
+        <div class="grid two-columns">
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Evento</p>
+                <h2>Datos de la cotización</h2>
+              </div>
+              <button class="ghost-button" id="newQuoteBtn" type="button">Nueva</button>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                Cliente
+                <input id="qClient" type="text" placeholder="Nombre del cliente" />
+              </label>
+
+              <label>
+                Tipo de evento
+                <input id="qType" type="text" placeholder="Cumpleaños, posada, boda..." />
+              </label>
+
+              <label>
+                Fecha
+                <input id="qDate" type="date" />
+              </label>
+
+              <label>
+                Lugar
+                <input id="qLocation" type="text" placeholder="Dirección o salón" />
+              </label>
+
+              <label>
+                Número de personas
+                <input id="qPeople" type="number" min="1" step="1" value="50" />
+              </label>
+
+              <label>
+                Nombre interno de cotización
+                <input id="qTitle" type="text" placeholder="Ej. Fiesta Ana 80 personas" />
+              </label>
+            </div>
+
+            <label>
+              Notas para la cotización
+              <textarea id="qNotes" rows="3" placeholder="Detalles especiales del evento."></textarea>
+            </label>
+
+            <hr class="soft-divider" />
+
+            <h3>Productos para el evento</h3>
+
+            <div class="quote-product-form">
+              <label>
+                Producto
+                <select id="quoteProductSelect"></select>
+              </label>
+
+              <label>
+                Consumo por persona
+                <input id="qConsumption" type="number" min="0" step="0.01" value="1" />
+              </label>
+
+              <label>
+                Porciones extra
+                <input id="qExtraServings" type="number" min="0" step="1" value="0" />
+              </label>
+
+              <button class="primary-button" id="addQuoteItemBtn" type="button">
+                Agregar
+              </button>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Consumo/persona</th>
+                    <th>Extras</th>
+                    <th>Porciones</th>
+                    <th>Costo estimado</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="quoteItemsBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Finanzas</p>
+                <h2>Gastos y utilidad</h2>
+              </div>
+            </div>
+
+            <h3>Gastos extra</h3>
+
+            <div class="expense-form">
+              <label>
+                Concepto
+                <input id="expenseName" type="text" placeholder="Transporte, hielo, gasolina..." />
+              </label>
+
+              <label>
+                Monto
+                <input id="expenseAmount" type="number" min="0" step="0.01" placeholder="0.00" />
+              </label>
+
+              <button class="primary-button" id="addExpenseBtn" type="button">
+                Agregar gasto
+              </button>
+            </div>
+
+            <div class="table-wrap compact-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Gasto</th>
+                    <th>Monto</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="expenseBody"></tbody>
+              </table>
+            </div>
+
+            <hr class="soft-divider" />
+
+            <div class="form-grid">
+              <label>
+                Merma / contingencia %
+                <input id="contingencyPercent" type="number" min="0" step="0.01" value="8" />
+              </label>
+
+              <label>
+                Ganancia deseada %
+                <input id="profitPercent" type="number" min="0" step="0.01" value="45" />
+              </label>
+
+              <label>
+                Tipo de descuento
+                <select id="discountType">
+                  <option value="fixed">Monto fijo</option>
+                  <option value="percent">Porcentaje</option>
+                </select>
+              </label>
+
+              <label>
+                Descuento
+                <input id="discountValue" type="number" min="0" step="0.01" value="0" />
+              </label>
+
+              <label>
+                IVA / impuesto %
+                <input id="taxPercent" type="number" min="0" step="0.01" value="0" />
+              </label>
+
+              <label>
+                Redondear hacia arriba a múltiplos de
+                <input id="roundTo" type="number" min="1" step="1" value="10" />
+              </label>
+            </div>
+
+            <div class="quote-save-row">
+              <select id="savedQuotesSelect"></select>
+              <button class="ghost-button" id="loadQuoteBtn" type="button">Cargar</button>
+              <button class="danger-button" id="deleteQuoteBtn" type="button">Eliminar</button>
+            </div>
+
+            <div class="form-actions stacked">
+              <button class="primary-button wide" id="saveQuoteBtn" type="button">
+                Guardar cotización
+              </button>
+              <button class="secondary-button wide" id="exportPdfBtn" type="button">
+                Exportar PDF
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ESTADÍSTICAS -->
+      <section id="estadisticas" class="tab-panel">
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span>Materia prima</span>
+            <strong id="statMaterials">$0.00</strong>
+          </article>
+
+          <article class="stat-card">
+            <span>Gastos extra</span>
+            <strong id="statExpenses">$0.00</strong>
+          </article>
+
+          <article class="stat-card">
+            <span>Costo total</span>
+            <strong id="statBaseCost">$0.00</strong>
+          </article>
+
+          <article class="stat-card featured">
+            <span>Total a cobrar</span>
+            <strong id="statTotalCharge">$0.00</strong>
+          </article>
+
+          <article class="stat-card success">
+            <span>Ganancia estimada</span>
+            <strong id="statNetProfit">$0.00</strong>
+          </article>
+
+          <article class="stat-card">
+            <span>Precio por persona</span>
+            <strong id="statPerPerson">$0.00</strong>
+          </article>
+        </div>
+
+        <div class="grid two-columns">
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Compras</p>
+                <h2>Materia prima total a comprar</h2>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Materia prima</th>
+                    <th>Cantidad base</th>
+                    <th>Cantidad con merma</th>
+                    <th>Costo estimado</th>
+                  </tr>
+                </thead>
+                <tbody id="purchaseBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Resumen</p>
+                <h2>Distribución de costos</h2>
+              </div>
+            </div>
+
+            <div id="barChart" class="bar-chart"></div>
+
+            <div class="summary-list">
+              <div>
+                <span>Ganancia objetivo</span>
+                <strong id="summaryTargetProfit">$0.00</strong>
+              </div>
+              <div>
+                <span>Descuento aplicado</span>
+                <strong id="summaryDiscount">$0.00</strong>
+              </div>
+              <div>
+                <span>Impuesto</span>
+                <strong id="summaryTax">$0.00</strong>
+              </div>
+              <div>
+                <span>Ajuste por redondeo</span>
+                <strong id="summaryRounding">$0.00</strong>
+              </div>
+              <div>
+                <span>Margen real</span>
+                <strong id="summaryMargin">0%</strong>
+              </div>
+              <div>
+                <span>Retorno sobre costo</span>
+                <strong id="summaryRoi">0%</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid two-columns">
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Productos</p>
+                <h2>Costo por producto</h2>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Porciones</th>
+                    <th>Costo total</th>
+                    <th>Costo por porción</th>
+                  </tr>
+                </thead>
+                <tbody id="lineStatsBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Gastos</p>
+                <h2>Gastos agregados</h2>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Concepto</th>
+                    <th>Monto</th>
+                  </tr>
+                </thead>
+                <tbody id="expenseStatsBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
 </html>
