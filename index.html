@@ -3,323 +3,275 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kali Studio | Baile profesional en México</title>
 
-  <title>Kali Studio | Estudio Creativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div class="glow" id="glow"></div>
+  <header class="hero" id="inicio">
+    <div class="hero-noise"></div>
+    <div class="hero-shape hero-shape-one"></div>
+    <div class="hero-shape hero-shape-two"></div>
 
-  <main class="page">
-    <header>
-      <a class="brand" href="#inicio" aria-label="Kali Studio">
-        <img
-          class="brand-logo"
-          src="./assets/img/kali-logo.png"
-          alt="Logo de Kali Studio"
-        />
-        <span>Kali Studio</span>
-      </a>
-
-      <nav aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#departamento">Departamento</a>
-        <a href="#proceso">Proceso</a>
-      </nav>
-
-      <a class="btn" href="#contacto">
-        Cotizar
-        <span>→</span>
-      </a>
-    </header>
-
-    <section class="hero" id="inicio">
-      <img
-        class="hero-logo-watermark"
-        src="./assets/img/kali-logo.png"
-        alt=""
-        aria-hidden="true"
-      />
-<div class="hero-floating-images" aria-hidden="true">
-  <figure class="hero-float-card hero-float-card-main">
-    <img src="./assets/img/hero-float-1.jpg" alt="" />
-  </figure>
-
-  <figure class="hero-float-card hero-float-card-top">
-    <img src="./assets/img/hero-float-2.jpg" alt="" />
-  </figure>
-
-  <figure class="hero-float-card hero-float-card-bottom">
-    <img src="./assets/img/hero-float-3.jpg" alt="" />
-  </figure>
-</div>
-
-      <div class="hero-content">
+    <div class="hero-content">
+      <div class="brand-mark">
+        <div class="brand-icon">
+          <span>K</span>
+        </div>
         <div>
-          <p class="eyebrow reveal">Hey, somos</p>
-          <h1 class="reveal">Kali<br />Studio</h1>
+          <strong>Kali Studio</strong>
+          <small>Estudio de Baile y Coreografía</small>
+        </div>
+      </div>
 
-          <div class="hero-logo-card reveal">
-            <img src="./assets/img/kali-logo.png" alt="Kali Estudio de Baile y Coreografía" />
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Baile, producción y formación escénica</p>
+          <h1>Baile profesional, justo y alcanzable.</h1>
+          <p class="hero-description">
+            Creamos experiencias para eventos, bailarines y academias con procesos responsables,
+            talento bien pagado y presupuestos pensatos para México.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#servicios" class="btn btn-primary">Contratar un servicio</a>
+            <a href="#clases" class="btn btn-secondary">Explorar clases</a>
           </div>
         </div>
 
-        <div class="hero-copy reveal">
-          <h2>Creatividad profesional sin precios imposibles.</h2>
-          <p>
-            Creamos experiencias visuales, escénicas y formativas para marcas,
-            artistas y personas que quieren verse profesionales desde el primer día.
-          </p>
+        <div class="hero-panel" aria-label="Resumen de Kali Studio">
+          <div class="glass-card main-card">
+            <span class="card-label">Para XV, eventos y shows</span>
+            <h2>Coreografías, producción y detalles que sí se sienten profesionales.</h2>
+            <p>
+              Desde una entrada inolvidable hasta una experiencia completa con bailarines,
+              vestuario, efectos, snacks y decoración.
+            </p>
+          </div>
+
+          <div class="floating-card floating-card-one">
+            <span>✓</span>
+            Trabajo responsable
+          </div>
+
+          <div class="floating-card floating-card-two">
+            <span>✓</span>
+            Precios claros
+          </div>
+
+          <div class="floating-card floating-card-three">
+            <span>✓</span>
+            Talento bien pagado
+          </div>
         </div>
-      </div>
-
-      <div class="services-row">
-        <article class="service-mini reveal">
-          <small>#01</small>
-          <p>Dirección creativa</p>
-        </article>
-
-        <article class="service-mini reveal">
-          <small>#02</small>
-          <p>Baile y coreografía</p>
-        </article>
-
-        <article class="service-mini reveal">
-          <small>#03</small>
-          <p>Producción de shows</p>
-        </article>
-
-        <article class="service-mini reveal">
-          <small>#04</small>
-          <p>Entrenamiento artístico</p>
-        </article>
-      </div>
-    </section>
-
-    <div class="logos">
-      <div class="logos-title">
-        <img src="./assets/img/kali-logo.png" alt="Logo Kali Studio" />
-        <p>Servicios pensados para<br />crecer contigo</p>
-      </div>
-
-      <div class="logo-item">
-        <span class="logo-icon"></span>
-        Clases
-      </div>
-
-      <div class="logo-item">
-        <span class="logo-icon"></span>
-        Shows
-      </div>
-
-      <div class="logo-item">
-        <span class="logo-icon"></span>
-        Eventos
-      </div>
-
-      <div class="logo-item">
-        <span class="logo-icon"></span>
-        Marcas
-      </div>
+      </section>
     </div>
 
-    <section id="nosotros">
-      <div class="intro">
+    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <a href="#inicio" class="nav-logo">
+        <span>K</span>
+        Kali Studio
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Eventos</a>
+        <a href="#clases">Clases</a>
+        <a href="#aprender">Aprender</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#acerca">Acerca de</a>
+        <a href="#login" class="login-link">Iniciar sesión</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section intro-section">
+      <div class="section-heading">
+        <p class="eyebrow">Una plataforma para todos</p>
+        <h2>Impulsamos el baile conectando eventos, alumnos, bailarines y espacios.</h2>
+      </div>
+
+      <div class="intro-grid">
+        <article class="intro-card">
+          <span>01</span>
+          <h3>Contrata sin complicarte</h3>
+          <p>
+            Servicios escénicos para XV años, eventos privados, shows, batucadas,
+            coreografías y experiencias personalizadas.
+          </p>
+        </article>
+
+        <article class="intro-card">
+          <span>02</span>
+          <h3>Encuentra dónde bailar</h3>
+          <p>
+            Espacios, academias y profesores podrán publicar clases para que más personas
+            descubran opciones reales cerca de ellas.
+          </p>
+        </article>
+
+        <article class="intro-card">
+          <span>03</span>
+          <h3>Aprende a tu ritmo</h3>
+          <p>
+            Tips, guías, recursos descargables, diccionario de baile y consejos para
+            bailarines, chambelanes y quinceañeras.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section services-section" id="servicios">
+      <div class="section-heading">
+        <p class="eyebrow">Servicios para eventos</p>
+        <h2>Elige una experiencia y nosotros le damos forma profesional.</h2>
+        <p>
+          Las tarjetas se administran desde el archivo JavaScript para que puedas cambiarlas
+          fácilmente cuando agregues nuevos servicios.
+        </p>
+      </div>
+
+      <div class="service-carousel" aria-label="Carrusel de servicios">
+        <button class="carousel-btn" id="prevService" aria-label="Servicio anterior">‹</button>
+
+        <div class="service-track" id="serviceTrack"></div>
+
+        <button class="carousel-btn" id="nextService" aria-label="Servicio siguiente">›</button>
+      </div>
+
+      <div class="carousel-dots" id="carouselDots" aria-label="Indicadores de servicios"></div>
+    </section>
+
+    <section class="section classes-section" id="clases">
+      <div class="classes-content">
         <div>
-          <p class="section-kicker reveal">Detrás del movimiento</p>
-          <h2 class="reveal">
-            Hacemos que tu idea se vea grande<span class="dot">.</span>
-          </h2>
-        </div>
-
-        <div class="intro-copy reveal">
-          <h3>
-            Somos un estudio creativo enfocado en resultados reales:
-            presencia, técnica y una imagen profesional.
-          </h3>
-
+          <p class="eyebrow">Para bailarines y academias</p>
+          <h2>Un punto de encuentro para descubrir clases en tu ciudad.</h2>
           <p>
-            En Kali Studio creemos que la calidad no debería estar reservada
-            solo para presupuestos enormes. Diseñamos soluciones accesibles,
-            bien ejecutadas y con una estética cuidada para que cada proyecto
-            tenga impacto desde el inicio.
+            La idea es que profesores, academias y espacios de baile puedan registrar sus clases
+            con ubicación, costo, horarios, estilo y nivel. Así, cualquier persona podrá buscar
+            por zona, maestro, estilo o lugar.
           </p>
 
-          <a class="btn btn-primary" href="#departamento">
-            Ver departamento
-            <span>→</span>
-          </a>
+          <div class="mini-actions">
+            <a href="#contacto" class="btn btn-primary">Quiero publicar clases</a>
+            <a href="#aprender" class="btn btn-secondary">Ver ideas de aprendizaje</a>
+          </div>
+        </div>
+
+        <div class="search-preview">
+          <div class="search-bar">
+            <span></span>
+            <p>Buscar salsa, jazz, urbano, bachata...</p>
+          </div>
+
+          <div class="class-result">
+            <strong>Urban Básico</strong>
+            <span>Roma Norte · $120 · Martes y jueves</span>
+          </div>
+
+          <div class="class-result">
+            <strong>Jazz para XV</strong>
+            <span>Iztapalapa · $150 · Sábados</span>
+          </div>
+
+          <div class="class-result">
+            <strong>Bachata social</strong>
+            <span>Coyoacán · $100 · Viernes</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="stats">
-        <article class="stat-card reveal">
-          <img src="./assets/img/kali-logo.png" alt="" aria-hidden="true" />
-          <strong data-count="120">0</strong>
-          <span>Horas de entrenamiento, montaje y dirección creativa.</span>
-        </article>
-
-        <article class="stat-card reveal">
-          <img src="./assets/img/kali-logo.png" alt="" aria-hidden="true" />
-          <strong data-count="35">0</strong>
-          <span>Coreografías, rutinas y conceptos escénicos diseñados.</span>
-        </article>
-
-        <article class="stat-card reveal">
-          <img src="./assets/img/kali-logo.png" alt="" aria-hidden="true" />
-          <strong data-count="3">0</strong>
-          <span>Formatos flexibles para clases, shows y proyectos.</span>
-        </article>
+    <section class="section learning-section" id="aprender">
+      <div class="section-heading">
+        <p class="eyebrow">Para aprender</p>
+        <h2>Contenido útil para quien apenas empieza y para quien ya vive del baile.</h2>
       </div>
 
-      <div class="gallery">
-        <article class="gallery-card reveal">
-          <div class="gallery-info">
-            <h4>Conceptos escénicos</h4>
-            <p>Ideas visuales listas para presentaciones, eventos y contenido.</p>
-          </div>
+      <div class="learning-grid">
+        <article>
+          <h3>Diccionario de baile</h3>
+          <p>Pasos, conteos, términos escénicos y referencias visuales fáciles de entender.</p>
         </article>
 
-        <article class="gallery-card reveal">
-          <div class="gallery-info">
-            <h4>Entrenamiento</h4>
-            <p>Clases con enfoque técnico, presencia corporal y confianza.</p>
-          </div>
+        <article>
+          <h3>Tips para chambelanes</h3>
+          <p>Consejos prácticos para ensayos, postura, actitud, coordinación y memoria coreográfica.</p>
         </article>
 
-        <article class="gallery-card reveal">
-          <div class="gallery-info">
-            <h4>Imagen profesional</h4>
-            <p>Proyectos con estética clara, moderna y bien producida.</p>
-          </div>
+        <article>
+          <h3>Guías para quinceañeras</h3>
+          <p>Ideas de canciones, checklist de ensayos, selección de vestuario y tiempos de preparación.</p>
         </article>
       </div>
     </section>
 
-    <section class="department" id="departamento">
-      <div class="department-card reveal">
-        <img
-          class="department-watermark"
-          src="./assets/img/kali-logo.png"
-          alt=""
-          aria-hidden="true"
-        />
+    <section class="section resources-section" id="recursos">
+      <div class="resource-card">
+        <p class="eyebrow">Recursos gratuitos</p>
+        <h2>Plantillas, ideas y guías para que tu evento o clase empiece mejor.</h2>
+        <p>
+          Más adelante puedes agregar descargas, playlists, checklists, calendarios de ensayo,
+          ideas de canciones y material para bailarines.
+        </p>
+        <a href="#contacto" class="btn btn-primary">Pedir una guía</a>
+      </div>
+    </section>
 
+    <section class="section about-section" id="acerca">
+      <div class="about-grid">
         <div>
-          <span class="badge">Departamento activo</span>
-
-          <h2>Kali — Estudio de Baile y Coreografía</h2>
-
-          <p>
-            Nuestro primer departamento está dedicado al movimiento:
-            clases, coreografías personalizadas, preparación para eventos,
-            montajes escénicos y asesoría corporal para artistas, marcas
-            y personas que quieren mejorar su presencia.
-          </p>
-
-          <div class="features">
-            <div class="feature">Coreografías para eventos y redes</div>
-            <div class="feature">Clases grupales o personalizadas</div>
-            <div class="feature">Montaje para shows y presentaciones</div>
-            <div class="feature">Planes accesibles y escalables</div>
-          </div>
+          <p class="eyebrow">Acerca de Kali Studio</p>
+          <h2>Profesionalizar el baile también significa cuidar a quienes lo hacen posible.</h2>
         </div>
 
-        <aside class="price-box">
-          <img src="./assets/img/kali-logo.png" alt="Kali Estudio de Baile y Coreografía" />
-
-          <div>
-            <small>Calidad profesional</small>
-            <strong>Sin<br />lujos<br />caros</strong>
-          </div>
-
-          <p>
-            Trabajamos con procesos simples, dirección clara y paquetes
-            flexibles para que puedas empezar sin invertir de más.
-          </p>
-        </aside>
+        <p>
+          Kali Studio nace para crear experiencias visuales, escénicas y formativas sin perder
+          lo humano: procesos claros, responsabilidad, creatividad, respeto por el trabajo
+          artístico y precios que permitan que más personas puedan acceder al baile.
+        </p>
       </div>
     </section>
 
-    <section class="process" id="proceso">
-      <p class="section-kicker reveal">Cómo trabajamos</p>
-
-      <div class="intro">
-        <h2 class="reveal">Un proceso claro, rápido y sin complicaciones.</h2>
-
-        <div class="intro-copy reveal">
-          <p>
-            Nos cuentas tu idea, definimos el objetivo y armamos una propuesta
-            ajustada a tu presupuesto. Menos vueltas, más acción.
-          </p>
-        </div>
-      </div>
-
-      <div class="process-grid">
-        <article class="process-card reveal">
-          <small>01</small>
-          <h3>Escuchamos</h3>
-          <p>Entendemos qué necesitas, para qué lo quieres y qué presupuesto tienes.</p>
-        </article>
-
-        <article class="process-card reveal">
-          <small>02</small>
-          <h3>Diseñamos</h3>
-          <p>Preparamos una propuesta visual, escénica o formativa adaptada a tu meta.</p>
-        </article>
-
-        <article class="process-card reveal">
-          <small>03</small>
-          <h3>Entrenamos</h3>
-          <p>Trabajamos técnica, seguridad, ritmo, expresión y presencia.</p>
-        </article>
-
-        <article class="process-card reveal">
-          <small>04</small>
-          <h3>Presentamos</h3>
-          <p>Entregamos un resultado limpio, profesional y listo para mostrarse.</p>
-        </article>
+    <section class="section login-section" id="login">
+      <div class="login-box">
+        <p class="eyebrow">Próximamente</p>
+        <h2>Inicio de sesión para bailarines, clientes y colaboradores.</h2>
+        <p>
+          Esta parte podrá servir después para ver información de ensayos, pagos, servicios
+          contratados, clases publicadas o recursos exclusivos.
+        </p>
       </div>
     </section>
 
-    <section class="cta" id="contacto">
-      <div class="cta-panel reveal">
-        <img
-          class="cta-logo-watermark"
-          src="./assets/img/kali-logo.png"
-          alt=""
-          aria-hidden="true"
-        />
-
-        <div>
-          <h2>Hagamos que tu proyecto se mueva.</h2>
-          <p>
-            Escríbenos para clases, coreografías, eventos o ideas creativas.
-            En Kali Studio convertimos presupuestos inteligentes en resultados
-            que se sienten profesionales.
-          </p>
-        </div>
-
-        <a class="btn" href="https://wa.me/573001234567" target="_blank" rel="noopener">
-          Contactar
-          <span>→</span>
-        </a>
-      </div>
+    <section class="section contact-section" id="contacto">
+      <h2>¿Listos para crear algo memorable?</h2>
+      <p>Agenda por WhatsApp y cuéntanos qué tienes en mente.</p>
+      <a class="btn btn-primary" id="contactWhatsapp" href="#" target="_blank" rel="noopener">
+        Contactar por WhatsApp
+      </a>
     </section>
-
-    <footer>
-      <div class="footer-brand">
-        <img src="./assets/img/kali-logo.png" alt="Logo Kali Studio" />
-        <p>© 2025 Kali Studio. Todos los derechos reservados.</p>
-      </div>
-
-      <p>Baile · Coreografía · Dirección creativa</p>
-    </footer>
   </main>
 
-  <script src="./js/main.js"></script>
+  <a class="whatsapp-float" id="whatsappFloat" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <span>WhatsApp</span>
+  </a>
+
+  <script src="script.js"></script>
 </body>
 </html>
