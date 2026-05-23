@@ -109,40 +109,47 @@
 
     <main>
         <section class="section intro-section">
-            <div class="section-heading">
-                <p class="eyebrow">Una plataforma para todos</p>
-                <h2>Impulsamos el baile conectando eventos, alumnos, bailarines y espacios.</h2>
-            </div>
+  <div class="explore-shell">
+    <div class="explore-copy">
+      <p class="eyebrow">Explora a tu manera</p>
+      <h2>Descubre lo que tenemos preparado para ti.</h2>
+      <p>
+        En lugar de mostrarte todo de golpe, Kali Studio te guía según lo que estás buscando:
+        un evento, una clase, recursos para aprender o un acceso para colaboradores.
+      </p>
+    </div>
 
-            <div class="intro-grid">
-                <article class="intro-card">
-                    <span>01</span>
-                    <h3>Contrata sin complicarte</h3>
-                    <p>
-                        Servicios escénicos para XV años, eventos privados, shows, batucadas,
-                        coreografías y experiencias personalizadas.
-                    </p>
-                </article>
+    <div class="explore-board" data-explore-board>
+      <div class="explore-tabs" role="tablist" aria-label="Opciones para explorar Kali Studio">
+        <button class="explore-tab is-active" type="button" data-explore-tab="eventos" aria-selected="true">
+          Eventos
+        </button>
+        <button class="explore-tab" type="button" data-explore-tab="clases" aria-selected="false">
+          Clases
+        </button>
+        <button class="explore-tab" type="button" data-explore-tab="aprender" aria-selected="false">
+          Aprender
+        </button>
+        <button class="explore-tab" type="button" data-explore-tab="recursos" aria-selected="false">
+          Recursos
+        </button>
+        <button class="explore-tab" type="button" data-explore-tab="acceso" aria-selected="false">
+          Acceso
+        </button>
+      </div>
 
-                <article class="intro-card">
-                    <span>02</span>
-                    <h3>Encuentra dónde bailar</h3>
-                    <p>
-                        Espacios, academias y profesores podrán publicar clases para que más personas
-                        descubran opciones reales cerca de ellas.
-                    </p>
-                </article>
+      <article class="explore-panel" data-explore-panel></article>
 
-                <article class="intro-card">
-                    <span>03</span>
-                    <h3>Aprende a tu ritmo</h3>
-                    <p>
-                        Tips, guías, recursos descargables, diccionario de baile y consejos para
-                        bailarines, chambelanes y quinceañeras.
-                    </p>
-                </article>
-            </div>
-        </section>
+      <div class="explore-mini-map" aria-label="Resumen de secciones disponibles">
+        <span class="explore-map-item is-active" data-explore-map="eventos">Shows</span>
+        <span class="explore-map-item" data-explore-map="clases">Clases</span>
+        <span class="explore-map-item" data-explore-map="aprender">Guías</span>
+        <span class="explore-map-item" data-explore-map="recursos">Descargas</span>
+        <span class="explore-map-item" data-explore-map="acceso">Portal</span>
+      </div>
+    </div>
+  </div>
+</section>
 
         <section class="section services-section" id="servicios">
             <div class="section-heading">
