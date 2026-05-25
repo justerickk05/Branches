@@ -599,7 +599,7 @@ img {
 }
 
 .intro-section .explore-board {
-  margin-bottom: clamp(-150px, -9vw, -120px);
+  margin-bottom: clamp(-140px, -9vw, -120px);
 }
 
 .explore-tabs {
