@@ -4,58 +4,6 @@ const CONFIG = {
     "Hola Kali Studio, quiero información sobre sus servicios de baile y eventos.",
 };
 
-const services = [
-  {
-    icon: "",
-    title: "Coreografías para XV",
-    description:
-      "Vals, baile sorpresa, entrada, montaje para chambelanes y asesoría para que tu momento se vea elegante y seguro.",
-    tag: "XV años",
-  },
-  {
-    icon: "",
-    title: "Batucadas y shows",
-    description:
-      "Energía escénica para levantar el ambiente de tu evento con bailarines, ritmo, presencia y coordinación profesional.",
-    tag: "Shows en vivo",
-  },
-  {
-    icon: "✨",
-    title: "Efectos especiales",
-    description:
-      "Detalles visuales para momentos clave: entradas, revelaciones, cierres, fotografías y escenas memorables.",
-    tag: "Producción",
-  },
-  {
-    icon: "",
-    title: "Decoración con globos",
-    description:
-      "Arcos, fondos, sets para fotos y detalles decorativos alineados al color, tema y presupuesto de tu evento.",
-    tag: "Decoración",
-  },
-  {
-    icon: "",
-    title: "Barra de snacks",
-    description:
-      "Una opción práctica y vistosa para complementar tu evento con una experiencia agradable para tus invitados.",
-    tag: "Extras",
-  },
-  {
-    icon: "",
-    title: "Renta de bailarines",
-    description:
-      "Bailarines preparados para shows, apoyo escénico, activaciones, eventos sociales y presentaciones especiales.",
-    tag: "Talento escénico",
-  },
-  {
-    icon: "",
-    title: "Paquetes personalizados",
-    description:
-      "Armamos una propuesta con lo que realmente necesitas, cuidando calidad, claridad y presupuesto.",
-    tag: "A tu medida",
-  },
-];
-
 const exploreContent = {
   eventos: {
     kicker: "Servicios para eventos",
