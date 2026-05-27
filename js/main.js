@@ -59,11 +59,6 @@ const homeNavLink = document.querySelector(".nav-links a[href='#inicio']");
 const whatsappFloat = document.getElementById("whatsappFloat");
 const contactWhatsapp = document.getElementById("contactWhatsapp");
 
-const serviceTrack = document.getElementById("serviceTrack");
-const prevService = document.getElementById("prevService");
-const nextService = document.getElementById("nextService");
-const carouselDots = document.getElementById("carouselDots");
-
 const exploreTabs = document.querySelectorAll("[data-explore-tab]");
 const explorePanel = document.querySelector("[data-explore-panel]");
 const exploreMapItems = document.querySelectorAll("[data-explore-map]");
@@ -86,105 +81,6 @@ function updateWhatsappLinks() {
   if (contactWhatsapp) {
     contactWhatsapp.href = whatsappUrl;
   }
-}
-
-function getVisibleServiceCount() {
-  if (window.innerWidth <= 980) {
-    return 1;
-  }
-
-  return 3;
-}
-
-function getVisibleServices() {
-  const visibleCount = getVisibleServiceCount();
-  const visibleServices = [];
-
-  for (let index = 0; index < visibleCount; index += 1) {
-    const serviceIndex = (activeServiceIndex + index) % services.length;
-    visibleServices.push(services[serviceIndex]);
-  }
-
-  return visibleServices;
-}
-
-function renderServices() {
-  if (!serviceTrack) {
-    return;
-  }
-
-  const visibleServices = getVisibleServices();
-
-  serviceTrack.innerHTML = visibleServices
-    .map((service) => {
-      return `
-        <article class="service-card">
-          <div class="service-icon">${service.icon}</div>
-          <h3>${service.title}</h3>
-          <p>${service.description}</p>
-          <strong>${service.tag}</strong>
-        </article>
-      `;
-    })
-    .join("");
-
-  renderDots();
-}
-
-function renderDots() {
-  if (!carouselDots) {
-    return;
-  }
-
-  carouselDots.innerHTML = services
-    .map((_, index) => {
-      const isActive = index === activeServiceIndex ? "active" : "";
-
-      return `
-        <button
-          class="${isActive}"
-          type="button"
-          data-index="${index}"
-          aria-label="Ver servicio ${index + 1}"
-        ></button>
-      `;
-    })
-    .join("");
-}
-
-function goToService(index) {
-  activeServiceIndex = (index + services.length) % services.length;
-  renderServices();
-  restartCarousel();
-}
-
-function nextServiceCard() {
-  goToService(activeServiceIndex + 1);
-}
-
-function prevServiceCard() {
-  goToService(activeServiceIndex - 1);
-}
-
-function startCarousel() {
-  stopCarousel();
-
-  carouselTimer = window.setInterval(() => {
-    activeServiceIndex = (activeServiceIndex + 1) % services.length;
-    renderServices();
-  }, 6500);
-}
-
-function stopCarousel() {
-  if (carouselTimer) {
-    window.clearInterval(carouselTimer);
-    carouselTimer = null;
-  }
-}
-
-function restartCarousel() {
-  stopCarousel();
-  startCarousel();
 }
 
 function renderExploreContent(key = "eventos") {
