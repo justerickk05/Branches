@@ -207,66 +207,9 @@ function toggleMobileMenu() {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 }
 
-function setupEvents() {
-  window.addEventListener("scroll", handleScrollEffects, { passive: true });
-
-  window.addEventListener("resize", () => {
-    renderServices();
-    handleScrollEffects();
-    closeMobileMenu();
-  });
-
-  if (menuToggle) {
-    menuToggle.addEventListener("click", toggleMobileMenu);
-  }
-
-  if (navLinks) {
-    navLinks.addEventListener("click", (event) => {
-      if (event.target.matches("a")) {
-        closeMobileMenu();
-      }
-    });
-  }
-
-  if (nextService) {
-    nextService.addEventListener("click", nextServiceCard);
-  }
-
-  if (prevService) {
-    prevService.addEventListener("click", prevServiceCard);
-  }
-
-  if (carouselDots) {
-    carouselDots.addEventListener("click", (event) => {
-      const dot = event.target.closest("button");
-
-      if (!dot) {
-        return;
-      }
-
-      const dotIndex = Number(dot.dataset.index);
-      goToService(dotIndex);
-    });
-  }
-
-  if (serviceTrack) {
-    serviceTrack.addEventListener("mouseenter", stopCarousel);
-    serviceTrack.addEventListener("mouseleave", startCarousel);
-  }
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeMobileMenu();
-    }
-  });
-}
-
 function init() {
   updateWhatsappLinks();
-  renderServices();
   setupExploreTabs();
-  startCarousel();
-  setupEvents();
   handleScrollEffects();
 }
 
